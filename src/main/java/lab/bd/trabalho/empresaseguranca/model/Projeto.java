@@ -40,7 +40,7 @@ public class Projeto {
 	@Column(name = "orcamento", precision = 7, scale = 2, nullable = false)
 	private BigDecimal orcamento;
 	
-	
+	//ta certo isso fabio?
 	private Linguagem linguagem;
 
 }
