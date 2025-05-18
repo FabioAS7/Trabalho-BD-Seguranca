@@ -19,38 +19,38 @@
     <header>
         <nav>
             <h1 id="Logo">
-                <a href="index.jsp" target="_self"><img src="./assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
+                <a href="index" target="_self"><img src="./assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
             </h1>
             <ul>
-                <li><a href="index.jsp" target="_self">Início</a></li>
+                <li><a href="index" target="_self">Início</a></li>
 
                 <li><a href="#" target="_self">Sobre a empresa</a>
                     <ul class="menu_dropdown">
-                        <li><a href="valores_senioridade.jsp">Valores de Senioridade</a></li>
-                        <li><a href="funcionarios_do_mes.jsp">Funcionários do mês</a></li>
-                        <li><a href="alterar_valores_senioridade.jsp">Alterar Valores</a></li>
+                        <li><a href="valores_senioridade">Valores de Senioridade</a></li>
+                        <li><a href="funcionarios_do_mes">Funcionários do mês</a></li>
+                        <li><a href="alterar_valores_senioridade">Alterar Valores</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">Área do Dev</a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_dev.jsp">Cadastrar Dev</a></li>
-                        <li><a href="especialidade_dev.jsp">Cadastrar Especialidade</a></li>
-                        <li><a href="ingressar_projeto.jsp">Ingressar em um Projeto</a></li>
+                        <li><a href="cadastrar_dev">Cadastrar Dev</a></li>
+                        <li><a href="especialidade_dev">Cadastrar Especialidade</a></li>
+                        <li><a href="ingressar_projeto">Ingressar em um Projeto</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">Linguagens e Frameworks</a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_linguagens.jsp">Cadastrar Linguagens</a></li>
-                        <li><a href="cadastrar_frameworks.jsp">Cadastrar Frameworks</a></li>
+                        <li><a href="cadastrar_linguagens">Cadastrar Linguagens</a></li>
+                        <li><a href="cadastrar_frameworks">Cadastrar Frameworks</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">  Projetos  </a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_projeto.jsp">Criar Projeto</a></li>
-                        <li><a href="atualizar_frameworks.jsp">Atualizar Frameworks utilizados</a></li>
+                        <li><a href="cadastrar_projeto">Criar Projeto</a></li>
+                        <li><a href="atualizar_frameworks">Atualizar Frameworks utilizados</a></li>
                     </ul>
                 </li>
             </ul>

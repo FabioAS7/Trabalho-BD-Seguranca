@@ -19,10 +19,10 @@
     <header>
         <nav>
             <h1 id="Logo">
-                <a href="index.jsp" target="_self"><img src="./assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
+                <a href="index" target="_self"><img src="./assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
             </h1>
             <ul>
-                <li><a href="index.jsp" target="_self">Início</a></li>
+                <li><a href="index" target="_self">Início</a></li>
 
                 <li><a href="#" target="_self">Sobre a empresa</a>
                     <ul class="menu_dropdown">

@@ -47,20 +47,66 @@ div.valores_senioridade{
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.445);
 }
 
-/*
+main table {
+    width: 98%;
+    table-layout: fixed;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+main table th, 
+main table td {
+    padding: 1px;
+    text-align: left;
+    word-break: break-word;
+    width: min-content;
+    
+}
+
 table{
     border: 2px solid #001e4be0;
     margin: auto;
+    font-size: 80em large;
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-table>tr{
+td, th{
+    white-space: normal;
+}
+
+td>label{
+    font-size: larger;
+    font-stretch: expanded;
 }
 
 tr>td{
     color: black;
 }
 
-td>label{
-    
+button{
+    color: black;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.295);
 }
-*/
+
+button:hover{
+    background-color: #D0D0D7
+}
+
+button:active{
+    background-color: #7B7B7F;
+}
+
+
+.a_link_clicavel {
+	color: #00122D;
+	text-decoration: underline;
+    padding: none;
+    white-space: nowrap;
+}
+
+.a_link_clicavel:hover {
+	color: #005198;
+	text-decoration: none;
+}

@@ -292,7 +292,6 @@ BEGIN
                 (SELECT nome FROM projeto WHERE id = @id),
                 @data_inicio,
                 (SELECT quant_dias_estimados FROM projeto WHERE id = @id),
-				@quant_dias_atrasados,
                 (SELECT orcamento FROM projeto WHERE id = @id),
                 (SELECT id FROM linguagem WHERE id = (SELECT linguagem_id FROM projeto WHERE id = @id))
             )
@@ -312,9 +311,9 @@ GO
 
 
 INSERT INTO senioridade VALUES
-(1, 'júnior', 18.46),
+(1, 'junior', 18.46),
 (2, 'pleno', 33.85),
-(3, 'sênior', 43.08)
+(3, 'senior', 43.08)
 GO
 
 INSERT INTO desenvolvedor VALUES
@@ -442,39 +441,5 @@ SELECT * FROM especialidade_dev
 SELECT * FROM participacao_dev
 SELECT * FROM framework_utilizado
 GO
-
--- DEVE RETORNAR 3 PROJETOS (3, 7, 8)
-SELECT * FROM function_projetos_atrasados()
-GO
-SELECT * FROM projeto
-
---No repository, deve ser possível buscar desenvolvedores por senioridade X
-SELECT * FROM desenvolvedor WHERE senioridade_id = (SELECT id FROM senioridade WHERE nome LIKE 'pleno')
-
-
---No repository, deve ser possível buscar desenvolvedores por formação X
--- usa o FindBy
-
-
---No repository, deve ser possível buscar linguagens disponíveis por tipo X
--- usa o FindBy
-
-
---No repository, deve ser possível buscar linguagem por IDE X
--- usa o FindBy
-
-
---No repository, deve ser possível buscar frameworks por nome da linguagem
-SELECT * FROM framework WHERE linguagem_id = (SELECT id FROM linguagem WHERE nome_linguagem LIKE 'java')
-
-
---No repository, deve ser possível buscar projetos por nome de usuário			--??????????????????? ANGELOOOOOOOOO HELP
-SELECT pj.nome FROM projeto pj
-INNER JOIN participacao_dev pa ON pj.id = pa.projeto_id
-INNER JOIN desenvolvedor d ON d.id = pa.desenvolvedor_id
-WHERE d.nome = ?
-go
-
-
 
 
