@@ -8,7 +8,7 @@ import lab.bd.trabalho.empresaseguranca.model.Desenvolvedor;
 public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, Integer>{
 	
 	//@Query(value = "SELECT * FROM desenvolvedor WHERE senioridade_id = (SELECT id FROM senioridade WHERE nome LIKE ?1)", nativeQuery = true)
-	@Query(value = "SELECT d FROM Desenvolvedor WHERE d.senioridade.nome LIKE ?1")
+	@Query(value = "SELECT d FROM Desenvolvedor d WHERE d.senioridade.nome LIKE ?1")
 	public List<Desenvolvedor> findDesenvolvedorSenioridade(String nomeSenioridade);
 	
 	public List<Desenvolvedor> findByFormacao(String formacao);

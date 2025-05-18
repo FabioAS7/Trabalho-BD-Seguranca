@@ -2,6 +2,7 @@ package lab.bd.trabalho.empresaseguranca.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +35,7 @@ public class Desenvolvedor {
 	@Column(name = "formacao", length = 15, nullable = false)
 	private String formacao;
 	
-	@ManyToOne //(targetEntity = Depto.class, fetch = FetchType.LAZY) Angelo me ajuda nisso aqui
+	@ManyToOne (targetEntity = Senioridade.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "senioridade_id", nullable = false)
 	private Senioridade senioridade;
 

@@ -2,11 +2,17 @@ package lab.bd.trabalho.empresaseguranca.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import org.hibernate.annotations.Formula;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,7 +46,10 @@ public class Projeto {
 	@Column(name = "orcamento", precision = 7, scale = 2, nullable = false)
 	private BigDecimal orcamento;
 	
-	//ta certo isso fabio?
-	private Linguagem linguagem;
+	@Formula("DATEDIFF(DAY, data_inicio, GETDATE()) - quant_dias_estimados")
+	private int quantDiasAtrasados;
 
+	@ManyToOne (targetEntity = Linguagem.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "linguagem_id", nullable = false)
+	private Linguagem linguagem;
 }
