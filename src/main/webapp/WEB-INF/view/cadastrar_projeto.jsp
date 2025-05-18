@@ -1,3 +1,6 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,17 +22,17 @@
                 <a href="index.html" target="_self"><img src="../../assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
             </h1>
             <ul>
-                <li><a href="index.html" target="_self">Início</a></li>
+                <li><a href="index.html" target="_self">InÃ­cio</a></li>
 
                 <li><a href="#" target="_self">Sobre a empresa</a>
                     <ul class="menu_dropdown">
                         <li><a href="valores_senioridade.html">Valores de Senioridade</a></li>
-                        <li><a href="funcionarios_do_mes.html">Funcionários do mês</a></li>
+                        <li><a href="funcionarios_do_mes.html">FuncionÃ¡rios do mÃªs</a></li>
                         <li><a href="alterar_valores_senioridade.html">Alterar Valores</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#">Área do Dev</a>
+                <li><a href="#">Ãrea do Dev</a>
                     <ul class="menu_dropdown">
                         <li><a href="cadastrar_dev.html">Cadastrar Dev</a></li>
                         <li><a href="especialidade_dev.html">Cadastrar Especialidade</a></li>
@@ -56,7 +59,7 @@
 
     <main class="shadow">
         <form action="cadastrarDev">
-            <h1>Criação de Projetos</h1>
+            <h1>CriaÃ§Ã£o de Projetos</h1>
             <table> 
                 <tr>
                     <td>
@@ -100,7 +103,7 @@
 
                 <tr>
                     <td>
-                        <label for="orcamento">Orçamento:
+                        <label for="orcamento">OrÃ§amento:
                             <abbr title="O valor informado deve ser separado por ponto, ex: 3296.00"><img src="../../assets/ponto-de-interrogacao_25x25.ico" alt=""></abbr>
                         </label>
                     </td>
@@ -163,7 +166,7 @@
 							<th>Nome do Projeto</th>
 							<th>Data de Inicio</th>
 							<th>Quant. de dias Estimados</th>
-                            <th>Orçamento</th>
+                            <th>OrÃ§amento</th>
                             <th>Linguagem</th>
                             <th></th>
                             <th></th>
@@ -204,7 +207,7 @@
 							<th>Data de Inicio</th>
 							<th>Quant. de dias Estimados</th>
                             <th>Quant. de dias Atrasados</th>
-                            <th>Orçamento</th>
+                            <th>OrÃ§amento</th>
                             <th>Linguagem</th>
                             <th></th>
                             <th></th>
@@ -248,11 +251,11 @@
     </main>
 
     <footer>
-        <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">Fábio</a></p>
+        <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">FÃ¡bio</a></p>
         <p>|</p>
-        <p> <a href="politicadeprivacidade.html" target="_blank">Política de Privacidade</a></p>
+        <p> <a href="politicadeprivacidade.html" target="_blank">PolÃ­tica de Privacidade</a></p>
         <p>|</p>
-        <p><a href="#">Termos e Condições</a></p>
+        <p><a href="#">Termos e CondiÃ§Ãµes</a></p>
         <p>|</p>
         <p><a href="#">Sobre este site (MavenSite)</a></p>
     </footer>

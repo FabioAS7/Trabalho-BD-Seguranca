@@ -262,7 +262,6 @@ id INT,
 nome VARCHAR(100),
 data_inicio DATE,
 quant_dias_estimados INT,
-quantDiasAtrasados INT,
 orcamento DECIMAL(7,2),
 linguagem_id INT
 ) AS
