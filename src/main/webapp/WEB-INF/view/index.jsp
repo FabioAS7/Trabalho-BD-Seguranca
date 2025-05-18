@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Home</title>
-    <link rel="shortcut icon" href="../../assets/favicon_shield.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon_shield.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/header.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body> 
     
     <header>
         <nav>
             <h1 id="Logo">
-                <a href="index.jsp" target="_self"><img src="../../assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
+                <a href="index.jsp" target="_self"><img src="./assets/favicon_shield_25x25.png" alt=""></a>Empresa<span>Segura</span>
             </h1>
             <ul>
                 <li><a href="index.jsp" target="_self">Início</a></li>
@@ -63,7 +63,7 @@
     <footer>
         <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">Fábio</a></p>
         <p>|</p>
-        <p> <a href="politicadeprivacidade.jsp" target="_blank">Política de Privacidade</a></p>
+        <p> <a href="politicadeprivacidade.html" target="_blank">Política de Privacidade</a></p>
         <p>|</p>
         <p><a href="#">Termos e Condições</a></p>
         <p>|</p>
