@@ -47,7 +47,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#"> Projetos </a>
+                <li><a href="#">  Projetos  </a>
                     <ul class="menu_dropdown">
                         <li><a href="cadastrar_projeto.jsp">Criar Projeto</a></li>
                         <li><a href="atualizar_frameworks.jsp">Atualizar Frameworks utilizados</a></li>
