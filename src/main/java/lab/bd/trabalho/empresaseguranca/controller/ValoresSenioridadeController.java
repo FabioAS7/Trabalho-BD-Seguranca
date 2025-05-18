@@ -20,34 +20,49 @@ public class ValoresSenioridadeController {
 	@Autowired
 	public SenioridadeRepository SenR;
 
-	@RequestMapping(name = "valores_controller", value = "/valores_controller", method = RequestMethod.GET)
+	@RequestMapping(name = "valores_senioridade", value = "/valores_senioridade", method = RequestMethod.GET)
 	/**
-	 * Funcao responsavel por mapear a requisicao GET e carregar a pagina dos valores
-	 * de senioridade /valores_senioridades
+	 * Funcao responsavel por mapear a requisicao GET e carregar a pagina dos
+	 * valores de senioridade /valores_senioridades
 	 * 
 	 * @param params
 	 * @param model
 	 * @return A requisicao da pagina GET
 	 */
-	public ModelAndView indexGet(@RequestParam Map<String, String> params, ModelMap model) {
-		Optional<Senioridade> junior = SenR.findByNome("junior");
-		Optional<Senioridade> senior = SenR.findByNome("senior");
-		Optional<Senioridade> pleno = SenR.findByNome("pleno");
-		
-		if(junior.isPresent() && senior.isPresent() && pleno.isPresent()) {
-			Senioridade j = junior.get();
-			Senioridade s = senior.get();
-			Senioridade p = pleno.get();
-			model.addAttribute("SenioridadeJ", j.getValorHora());
-			model.addAttribute("SenioridadeS", s.getValorHora());
-			model.addAttribute("SenioridadeP", p.getValorHora());
-		} else {
+	public ModelAndView valoresSenioridadeGet(@RequestParam Map<String, String> params, ModelMap model) {
+
+		try {
+			Senioridade junior = SenR.findByNome("junior");
+			Senioridade senior = SenR.findByNome("senior");
+			Senioridade pleno = SenR.findByNome("pleno");
+
+			if (junior.getValorHora().intValue() == 0 && senior.getValorHora().intValue() == 0 && pleno.getValorHora().intValue() == 0) {
+				model.addAttribute("SenioridadeJ", junior.getValorHora());
+				model.addAttribute("SenioridadeS", senior.getValorHora());
+				model.addAttribute("SenioridadeP", pleno.getValorHora());
+			}
+		} catch (Exception e) {
 			model.addAttribute("SenioridadeJ", "Não colocado");
 			model.addAttribute("SenioridadeS", "Não colocado");
 			model.addAttribute("SenioridadeP", "Não colocado");
 		}
-		
-		
-		return new ModelAndView("valores_controller");
+
+		return new ModelAndView("valores_senioridade");
 	}
+
+	/*
+	 * @RequestMapping(name = "controleExemplar", value = "/controleExemplar",
+	 * method = RequestMethod.POST)
+	 *//**
+		 * Realiza as operações de Inserir, Atualizar, Exclur, Buscar e Listar
+		 * 
+		 * @param params
+		 * @param model
+		 * @return
+		 *//*
+			 * public ModelAndView controleExemplarPost(@RequestParam Map<String, String>
+			 * params, ModelMap model) {
+			 * 
+			 * return new ModelAndView("controleExemplar"); }
+			 */
 }

@@ -81,7 +81,7 @@
                 <li>Participar de reuniões de equipe (daily, planning, etc.).</li>
                 <li>Documentar pequenas partes do sistema.</li>
             </ul>
-            <h2>Valor / Hora:</h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeJ.valorHora }"/></h2>
         </div>
 
         <div class="valores_senioridade">
@@ -107,7 +107,7 @@
                 <li>Participar ativamente de decisões técnicas do projeto.</li>
                 <li>Aplicar padrões de arquitetura (MVC, REST, etc.).</li>
             </ul>
-            <h2>Valor / Hora:</h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeP.valorHora }"/></h2>
         </div>
        
 
@@ -134,7 +134,7 @@
                 <li>Realizar code reviews complexos com foco em performance e manutenibilidade.</li>
                 <li>Antecipar problemas técnicos e riscos em entregas.</li>
             </ul>
-            <h2>Valor / Hora:</h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeS.valorHora }"/></h2>
         </div>
     </main>
 
