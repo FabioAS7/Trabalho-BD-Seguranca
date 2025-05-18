@@ -5,7 +5,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import jakarta.transaction.Transactional;
 import lab.bd.trabalho.empresaseguranca.model.Desenvolvedor;
 import lab.bd.trabalho.empresaseguranca.model.Framework;
@@ -78,7 +77,6 @@ public class TesteRepositorys {
 		for (Linguagem ling : lingsIDE) {
 			System.out.println(ling.toString());
 		}
-
 	}
 
 	@Test
@@ -95,7 +93,6 @@ public class TesteRepositorys {
 		for (Projeto ling : proFunc) {
 			System.out.println(ling.toString());
 		}
-
 	}
 
 }

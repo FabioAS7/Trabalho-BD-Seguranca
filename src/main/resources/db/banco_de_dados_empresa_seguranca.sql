@@ -262,48 +262,48 @@ id INT,
 nome VARCHAR(100),
 data_inicio DATE,
 quant_dias_estimados INT,
-quant_dias_atrasados INT,
+quantDiasAtrasados INT,
 orcamento DECIMAL(7,2),
-linguagem VARCHAR(90)
+linguagem_id INT
 ) AS
 BEGIN
 
-	DECLARE @id AS INT
-	DECLARE @data_inicio AS DATE
-	DECLARE @quant_dias_estimados AS INT
-	DECLARE @quant_dias_atrasados AS INT
-	DECLARE @dias_passados AS INT
+    DECLARE @id AS INT
+    DECLARE @data_inicio AS DATE
+    DECLARE @quant_dias_estimados AS INT
+    DECLARE @quant_dias_atrasados AS INT
+    DECLARE @dias_passados AS INT
 
-	DECLARE c CURSOR 
-	FOR SELECT id FROM projeto
-	OPEN c
+    DECLARE c CURSOR 
+    FOR SELECT id FROM projeto
+    OPEN c
 
-	FETCH NEXT FROM c INTO @id
+    FETCH NEXT FROM c INTO @id
 
-	WHILE @@FETCH_STATUS = 0 BEGIN
-		
-		SET @data_inicio = (SELECT data_inicio FROM projeto WHERE id = @id)
-		SET @quant_dias_estimados = (SELECT quant_dias_estimados FROM projeto WHERE id = @id)
-		SET @dias_passados = (SELECT DATEDIFF(DAY, @data_inicio, GETDATE()))
+    WHILE @@FETCH_STATUS = 0 BEGIN
 
-		IF( @dias_passados > @quant_dias_estimados) BEGIN
-			SET @quant_dias_atrasados = @dias_passados - @quant_dias_estimados
+        SET @data_inicio = (SELECT data_inicio FROM projeto WHERE id = @id)
+        SET @quant_dias_estimados = (SELECT quant_dias_estimados FROM projeto WHERE id = @id)
+        SET @dias_passados = (SELECT DATEDIFF(DAY, @data_inicio, GETDATE()))
 
-			INSERT INTO @tabela_projetos_atrasados VALUES (@id,
-				(SELECT nome FROM projeto WHERE id = @id),
-				@data_inicio,
-				(SELECT quant_dias_estimados FROM projeto WHERE id = @id),
+        IF( @dias_passados > @quant_dias_estimados) BEGIN
+            SET @quant_dias_atrasados = @dias_passados - @quant_dias_estimados
+
+            INSERT INTO @tabela_projetos_atrasados VALUES (@id,
+                (SELECT nome FROM projeto WHERE id = @id),
+                @data_inicio,
+                (SELECT quant_dias_estimados FROM projeto WHERE id = @id),
 				@quant_dias_atrasados,
-				(SELECT orcamento FROM projeto WHERE id = @id),
-				(SELECT nome_linguagem FROM linguagem WHERE id = (SELECT linguagem_id FROM projeto WHERE id = @id))
-			)
-		END
-		FETCH NEXT FROM c INTO @id
-	END
+                (SELECT orcamento FROM projeto WHERE id = @id),
+                (SELECT id FROM linguagem WHERE id = (SELECT linguagem_id FROM projeto WHERE id = @id))
+            )
+        END
+        FETCH NEXT FROM c INTO @id
+    END
 
-	CLOSE c
-	DEALLOCATE c
-	RETURN
+    CLOSE c
+    DEALLOCATE c
+    RETURN
 END
 GO
 
