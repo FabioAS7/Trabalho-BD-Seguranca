@@ -29,24 +29,28 @@ public class ValoresSenioridadeController {
 	 * @return A requisicao da pagina GET
 	 */
 	public ModelAndView valoresSenioridadeGet(@RequestParam Map<String, String> params, ModelMap model) {
-
+	
 		try {
 			Senioridade junior = SenR.findByNome("junior");
-			Senioridade senior = SenR.findByNome("senior");
-			Senioridade pleno = SenR.findByNome("pleno");
-			
-			System.err.println(junior.getValorHora());
-			if (junior.getValorHora().intValue() != 0 && senior.getValorHora().intValue() != 0 && pleno.getValorHora().intValue() != 0) {
-				model.addAttribute("SenioridadeJ", junior.getValorHora());
-				model.addAttribute("SenioridadeS", senior.getValorHora());
-				model.addAttribute("SenioridadeP", pleno.getValorHora());
-			}
+			model.addAttribute("SenioridadeJ", junior.getValorHora());
 		} catch (Exception e) {
-			model.addAttribute("SenioridadeJ", "Não colocado");
-			model.addAttribute("SenioridadeS", "Não colocado");
-			model.addAttribute("SenioridadeP", "Não colocado");
+			model.addAttribute("SenioridadeJ", "Não inserirdo");
 		}
-
+		
+		try {
+			Senioridade pleno = SenR.findByNome("pleno");
+			model.addAttribute("SenioridadeP", pleno.getValorHora());
+		} catch (Exception e) {
+			model.addAttribute("SenioridadeP", "Não inserirdo");
+		}
+		
+		try {
+			Senioridade senior = SenR.findByNome("senior");
+			model.addAttribute("SenioridadeS", senior.getValorHora());
+		} catch (Exception e) {
+			model.addAttribute("SenioridadeS", "Não inserirdo");
+		}
+		
 		return new ModelAndView("valores_senioridade");
 	}
 
