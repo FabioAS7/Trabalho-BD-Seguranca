@@ -46,11 +46,12 @@ header ul{
 header ul li{
     display: inline-block;
     position: relative;
+    
 }
 
 header ul li a{
     display: block;
-    padding: 20px 25px;
+    padding: 20px 40px;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
@@ -65,7 +66,7 @@ header ul li a:hover{
 
 header ul li:hover .menu_dropdown{
     display: block;
-      z-index: 11;
+    z-index: 11;
 }
 
 header ul li ul.menu_dropdown{

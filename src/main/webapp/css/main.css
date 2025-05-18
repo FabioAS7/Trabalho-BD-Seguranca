@@ -2,10 +2,16 @@
 
 main{
     flex: 1;
-    padding-top: 80px;
-    width: 950px;
-    background-color: #F7F7FF;
+    padding-top: 90px;
+    width: 850px;
+    background-color: #f7f7fffa;
     margin: auto;
+}
+
+main.shadow{
+    border: 10px solid;
+    border-color: #001e4be0;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.445);
 }
 
 main h1{
@@ -16,3 +22,45 @@ main p{
     text-align: justify;
     padding: 5px 70px;
 }
+
+.valores_senioridade>h2{
+    text-align: left;
+    text-indent: 30px;
+    margin: 10px 0px;
+}
+
+.valores_senioridade>img{
+    padding: 0px 15px 0px 50px;
+}
+
+.valores_senioridade>ul{
+    padding-left: 50px;
+}
+
+.valores_senioridade>ul>li{
+    padding-bottom: 5px;
+}
+
+div.valores_senioridade{
+    border: 10px solid;
+    border-color: #001e4be0;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.445);
+}
+
+/*
+table{
+    border: 2px solid #001e4be0;
+    margin: auto;
+}
+
+table>tr{
+}
+
+tr>td{
+    color: black;
+}
+
+td>label{
+    
+}
+*/
