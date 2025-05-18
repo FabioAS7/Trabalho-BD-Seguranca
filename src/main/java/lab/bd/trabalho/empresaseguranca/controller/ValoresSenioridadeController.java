@@ -1,7 +1,6 @@
 package lab.bd.trabalho.empresaseguranca.controller;
 
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +34,9 @@ public class ValoresSenioridadeController {
 			Senioridade junior = SenR.findByNome("junior");
 			Senioridade senior = SenR.findByNome("senior");
 			Senioridade pleno = SenR.findByNome("pleno");
-
-			if (junior.getValorHora().intValue() == 0 && senior.getValorHora().intValue() == 0 && pleno.getValorHora().intValue() == 0) {
+			
+			System.err.println(junior.getValorHora());
+			if (junior.getValorHora().intValue() != 0 && senior.getValorHora().intValue() != 0 && pleno.getValorHora().intValue() != 0) {
 				model.addAttribute("SenioridadeJ", junior.getValorHora());
 				model.addAttribute("SenioridadeS", senior.getValorHora());
 				model.addAttribute("SenioridadeP", pleno.getValorHora());
@@ -50,19 +50,4 @@ public class ValoresSenioridadeController {
 		return new ModelAndView("valores_senioridade");
 	}
 
-	/*
-	 * @RequestMapping(name = "controleExemplar", value = "/controleExemplar",
-	 * method = RequestMethod.POST)
-	 *//**
-		 * Realiza as operações de Inserir, Atualizar, Exclur, Buscar e Listar
-		 * 
-		 * @param params
-		 * @param model
-		 * @return
-		 *//*
-			 * public ModelAndView controleExemplarPost(@RequestParam Map<String, String>
-			 * params, ModelMap model) {
-			 * 
-			 * return new ModelAndView("controleExemplar"); }
-			 */
 }

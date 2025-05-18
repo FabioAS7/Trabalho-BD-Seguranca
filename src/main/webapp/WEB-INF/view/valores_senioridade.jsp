@@ -26,31 +26,31 @@
 
                 <li><a href="#" target="_self">Sobre a empresa</a>
                     <ul class="menu_dropdown">
-                        <li><a href="valores_senioridade.jsp">Valores de Senioridade</a></li>
-                        <li><a href="funcionarios_do_mes.jsp">Funcionários do mês</a></li>
-                        <li><a href="alterar_valores_senioridade.jsp">Alterar Valores</a></li>
+                        <li><a href="valores_senioridade">Valores de Senioridade</a></li>
+                        <li><a href="funcionarios_do_mes">Funcionários do mês</a></li>
+                        <li><a href="alterar_valores_senioridade">Alterar Valores</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">Área do Dev</a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_dev.jsp">Cadastrar Dev</a></li>
-                        <li><a href="especialidade_dev.jsp">Cadastrar Especialidade</a></li>
-                        <li><a href="ingressar_projeto.jsp">Ingressar em um Projeto</a></li>
+                        <li><a href="cadastrar_dev">Cadastrar Dev</a></li>
+                        <li><a href="especialidade_dev">Cadastrar Especialidade</a></li>
+                        <li><a href="ingressar_projeto">Ingressar em um Projeto</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">Linguagens e Frameworks</a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_linguagens.jsp">Cadastrar Linguagens</a></li>
-                        <li><a href="cadastrar_frameworks.jsp">Cadastrar Frameworks</a></li>
+                        <li><a href="cadastrar_linguagens">Cadastrar Linguagens</a></li>
+                        <li><a href="cadastrar_frameworks">Cadastrar Frameworks</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#">  Projetos  </a>
                     <ul class="menu_dropdown">
-                        <li><a href="cadastrar_projeto.jsp">Criar Projeto</a></li>
-                        <li><a href="atualizar_frameworks.jsp">Atualizar Frameworks utilizados</a></li>
+                        <li><a href="cadastrar_projeto">Criar Projeto</a></li>
+                        <li><a href="atualizar_frameworks">Atualizar Frameworks utilizados</a></li>
                     </ul>
                 </li>
             </ul>
@@ -81,7 +81,7 @@
                 <li>Participar de reuniões de equipe (daily, planning, etc.).</li>
                 <li>Documentar pequenas partes do sistema.</li>
             </ul>
-            <h2>Valor / Hora: <c:out value="${SenioridadeJ.valorHora }"/></h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeJ }"/></h2>
         </div>
 
         <div class="valores_senioridade">
@@ -107,7 +107,7 @@
                 <li>Participar ativamente de decisões técnicas do projeto.</li>
                 <li>Aplicar padrões de arquitetura (MVC, REST, etc.).</li>
             </ul>
-            <h2>Valor / Hora: <c:out value="${SenioridadeP.valorHora }"/></h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeP }"/></h2>
         </div>
        
 
@@ -134,14 +134,14 @@
                 <li>Realizar code reviews complexos com foco em performance e manutenibilidade.</li>
                 <li>Antecipar problemas técnicos e riscos em entregas.</li>
             </ul>
-            <h2>Valor / Hora: <c:out value="${SenioridadeS.valorHora }"/></h2>
+            <h2>Valor / Hora: <c:out value="${SenioridadeS }"/></h2>
         </div>
     </main>
 
     <footer>
         <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">Fábio</a></p>
         <p>|</p>
-        <p> <a href="politicadeprivacidade.html" target="_blank">Política de Privacidade</a></p>
+        <p> <a href="politicadeprivacidade" target="_blank">Política de Privacidade</a></p>
         <p>|</p>
         <p><a href="#">Termos e Condições</a></p>
         <p>|</p>
