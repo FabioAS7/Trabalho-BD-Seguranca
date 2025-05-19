@@ -1,7 +1,5 @@
 package lab.bd.trabalho.empresaseguranca.controller;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lab.bd.trabalho.empresaseguranca.model.Desenvolvedor;
 import lab.bd.trabalho.empresaseguranca.model.EspecialidadeDev;
+import lab.bd.trabalho.empresaseguranca.model.EspecialidadeDevId;
 import lab.bd.trabalho.empresaseguranca.model.Linguagem;
-import lab.bd.trabalho.empresaseguranca.model.Projeto;
 import lab.bd.trabalho.empresaseguranca.repository.DesenvolvedorRepository;
 import lab.bd.trabalho.empresaseguranca.repository.EspecialidadeDevRepository;
 import lab.bd.trabalho.empresaseguranca.repository.LinguagemRepository;
@@ -27,17 +25,17 @@ public class EspecialidadeDevController {
 
 	@Autowired
 	public DesenvolvedorRepository DR;
-	
+
 	@Autowired
 	public LinguagemRepository LR;
-	
+
 	@Autowired
 	public EspecialidadeDevRepository EDR;
-	
-	@RequestMapping(name = "cadastrar_projeto", value = "/cadastrar_projeto", method = RequestMethod.GET)
+
+	@RequestMapping(name = "especialidade_dev", value = "/especialidade_dev", method = RequestMethod.GET)
 	/**
 	 * Funcao responsavel por mapear a requisicao GET e carregar a pagina de
-	 * cadastro de projeto /cadastrar_projeto
+	 * cadastro de projeto /especialidade_dev
 	 * 
 	 * @param params
 	 * @param model
@@ -46,36 +44,51 @@ public class EspecialidadeDevController {
 	public ModelAndView valoresSenioridadeGet(@RequestParam Map<String, String> params, ModelMap model) {
 
 		String acao = params.get("acao");
-		String id = params.get("id");
+		Desenvolvedor d = new Desenvolvedor();
+		Linguagem l = new Linguagem();
 		List<Desenvolvedor> desenvolvedores = new ArrayList<>();
 		List<Linguagem> linguagens = new ArrayList<>();
 		List<EspecialidadeDev> espDev = new ArrayList<>();
 		EspecialidadeDev eD = new EspecialidadeDev();
+		Integer idD = null;
+		Integer idL = null;
 		String erro = "";
 
 		try {
-			if (id != null && !id.isBlank()) {
-				eD = id;
-			}
+			desenvolvedores = DR.findAll();
+			linguagens = LR.findAll();
+			model.addAttribute("desenvolvedores", desenvolvedores);
+			model.addAttribute("linguagens", linguagens);
 			if (acao.equals("excluir")) {
-				EDR.deleteById(null);
+				idD = Integer.parseInt(params.get("desenvolvedor_id"));
+				idL = Integer.parseInt(params.get("linguagem_id"));
+				d = DR.getReferenceById(idD);
+				l = LR.getReferenceById(idL);
+				EspecialidadeDevId id = new EspecialidadeDevId();
+				id.setDesenvolvedor(d);
+				id.setLinguagem(l);
 				espDev = EDR.findAll();
 				eD = null;
 			} else if (acao.equals("editar")) {
-				p = ProR.getReferenceById(p.getId());
-				projetos = null;
-				model.addAttribute("projeto", p);
+				idD = Integer.parseInt(params.get("desenvolvedor_id"));
+				idL = Integer.parseInt(params.get("linguagem_id"));
+				d = DR.getReferenceById(idD);
+				l = LR.getReferenceById(idL);
+				eD = EDR.findByDesenvolvedorAndLinguagem(d, l);
+				espDev = null;
+				model.addAttribute("partiDev", eD);
 			}
 		} catch (Exception e) {
 			e.getMessage();
 		} finally {
 			model.addAttribute("erro", erro);
-			model.addAttribute("projetos", projetos);
+			model.addAttribute("partiDevs", espDev);
 		}
-		return new ModelAndView("cadastrar_projeto");
+
+		return new ModelAndView("especialidade_dev");
 	}
 
-	@RequestMapping(name = "cadastrar_projeto", value = "/cadastrar_projeto", method = RequestMethod.POST)
+	@RequestMapping(name = "especialidade_dev", value = "/especialidade_dev", method = RequestMethod.POST)
 	/**
 	 * Realiza as operações de Inserir, Atualizar, Exclur, Buscar e Listar
 	 * 
@@ -84,24 +97,27 @@ public class EspecialidadeDevController {
 	 * @return
 	 */
 	public ModelAndView controleExemplarPost(@RequestParam Map<String, String> params, ModelMap model) {
-		Integer id = null;
-		String nome = params.get("nome");
-		String dataInicio = params.get("data_inicio");
-		String quantDiasEst = params.get("quant_dias_estimados");
-		String orcamento = params.get("orcamento");
 		String cmd = params.get("botao");
 		String saida = "";
 		String erro = "";
-		Projeto p = new Projeto();
-		List<Projeto> projetos = new ArrayList<Projeto>();
-		List<Linguagem> linguagens = new ArrayList<Linguagem>();
+		Integer idD = null;
+		Integer idL = null;
+		EspecialidadeDev eD = new EspecialidadeDev();
+		List<Desenvolvedor> desenvolvedores = new ArrayList<>();
+		List<Linguagem> linguagens = new ArrayList<>();
+		List<EspecialidadeDev> especialidadeDosDevs = new ArrayList<>();
 
-		if (params.get("id") != null && !params.get("id").isEmpty()) {
-			id = Integer.parseInt(params.get("id"));
+		if (params.get("desenvolvedor_id") != null && !params.get("desenvolvedor_id").isEmpty()) {
+			idD = Integer.parseInt(params.get("desenvolvedor_id"));
+		}
+		if (params.get("linguagem_id") != null && !params.get("linguagem_id").isEmpty()) {
+			idL = Integer.parseInt(params.get("linguagem_id"));
 		}
 
 		try {
-			linguagens = LinR.findAll();
+			linguagens = LR.findAll();
+			desenvolvedores = DR.findAll();
+			model.addAttribute("desenvolvedores", desenvolvedores);
 			model.addAttribute("linguagens", linguagens);
 		} catch (Exception e) {
 			erro = e.getMessage();
@@ -109,64 +125,40 @@ public class EspecialidadeDevController {
 
 		try {
 			if (!cmd.equalsIgnoreCase("Listar")) {
-				p.setId(id);
-			}
-			if (cmd.contentEquals("Adicionar")) {
-				if (p.getId() != null) {
-					p.setNome(nome);
-					p.setDataInicio(LocalDate.parse(dataInicio));
-					p.setOrcamento(BigDecimal.valueOf(Double.parseDouble(orcamento)));
-					p.setQuantDiasEstimados(Integer.parseInt(quantDiasEst));
-					Linguagem l = LinR.getReferenceById(Integer.parseInt(params.get("linguagem_id")));
-					p.setLinguagem(l);
-					ProR.save(p);
-					saida = "Atualizado com sucesso!";
-
-				} else {
-					p.setNome(nome);
-					p.setDataInicio(LocalDate.parse(dataInicio));
-					p.setOrcamento(BigDecimal.valueOf(Double.parseDouble(orcamento)));
-					p.setQuantDiasEstimados(Integer.parseInt(quantDiasEst));
-					Linguagem l = LinR.getReferenceById(Integer.parseInt(params.get("linguagem_id")));
-					p.setLinguagem(l);
-					ProR.save(p);
-					saida = "Salvo com sucesso!";
-				}
-			}
-			if (cmd.equalsIgnoreCase("Listar")) {
-				projetos = ProR.findAll();
-			} else if (cmd.equalsIgnoreCase("PesquisarAtt")) {
-				projetos = ProR.findProjetoAtrasado();
-				model.addAttribute("projetosA", projetos);
-			} else {
-				if (cmd.equalsIgnoreCase("Pesquisar")) {
-					p = ProR.findByNome(nome);
-					model.addAttribute("projeto", p);
-				}
-				if (p.getId() != null) {
-					if (cmd.equalsIgnoreCase("Remover")) {
-						ProR.deleteById(p.getId());
-						saida = "Excluido com sucesso!";
+				Desenvolvedor d = DR.findById(idD).orElse(null);
+				Linguagem l = LR.findById(idL).orElse(null);
+				if (cmd.contentEquals("Adicionar")) {
+					if (d != null && l != null) {
+						eD = EDR.findByDesenvolvedorAndLinguagem(d, l);
+						if (eD == null) {
+							EspecialidadeDev NovoeD = new EspecialidadeDev();
+							NovoeD.setDesenvolvedor(d);
+							NovoeD.setLinguagem(l);
+							EDR.save(NovoeD);
+							saida = "Desenvolvedor especializado na linguagem com sucesso";
+						}
 					}
-				} else {
-					erro = "Id nulo";
 				}
+				if (cmd.equalsIgnoreCase("Remover")) {
+					EspecialidadeDevId id = new EspecialidadeDevId();
+					id.setDesenvolvedor(d);
+					id.setLinguagem(l);
+					EDR.deleteById(id);
+					saida = "Registro excluido com sucesso";
+				}
+			} else {
+				especialidadeDosDevs = EDR.findAll();
 			}
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			erro = e.getMessage();
 		} finally {
-			if (!cmd.equalsIgnoreCase("Pesquisar")) {
-				p = null;
-			}
 			if (!cmd.equalsIgnoreCase("Listar")) {
-				projetos = null;
+				eD = null;
 			}
 		}
 		model.addAttribute("erro", erro);
 		model.addAttribute("saida", saida);
-		model.addAttribute("projetos", projetos);
-		return new ModelAndView("cadastrar_projeto");
+		model.addAttribute("partiDevs", especialidadeDosDevs);
+		return new ModelAndView("especialidade_dev");
 	}
 }

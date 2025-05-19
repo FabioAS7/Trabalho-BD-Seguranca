@@ -114,7 +114,7 @@
         </form>
 	
 		 <div>
-			<c:if test="${not empty projetos}">
+			<c:if test="${not empty frameworkUtilizados}">
 				<table class="table_border table">
 					<thead>
 						<tr>

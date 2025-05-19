@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import lab.bd.trabalho.empresaseguranca.model.Desenvolvedor;
 import lab.bd.trabalho.empresaseguranca.model.Framework;
 import lab.bd.trabalho.empresaseguranca.model.FrameworkUtilizado;
 import lab.bd.trabalho.empresaseguranca.model.FrameworkUtilizadoId;
@@ -33,14 +35,53 @@ public class AtualizarFrameworksController {
 	
 	@RequestMapping(name = "atualizar_frameworks", value = "/atualizar_frameworks", method = RequestMethod.GET)
 	public ModelAndView atualizar_frameworksGet(@RequestParam Map<String, String> params, ModelMap model) {
+
 		String acao = params.get("acao");
+		Desenvolvedor d = new Desenvolvedor();
+		Framework f = new Framework();
+		Projeto p = new Projeto();
+		FrameworkUtilizado frameworkUtilizado = new FrameworkUtilizado();
 		Integer idP = null;
 		Integer idF = null;
+		String erro = "";
 		List<Framework> frameworks = new ArrayList<Framework>();
 		List<Projeto> projetos = new ArrayList<Projeto>();
-		
+		List<FrameworkUtilizado> frameworkUtilizados = new ArrayList<FrameworkUtilizado>();
+
+		try {
+			frameworks = fraR.findAll();
+			projetos = proR.findAll();
+			model.addAttribute("frameworks", frameworks);
+			model.addAttribute("projetos", projetos);
+			if (acao.equals("excluir")) {
+				idP = Integer.parseInt(params.get("idP"));
+				idF = Integer.parseInt(params.get("idF"));
+				f = fraR.getReferenceById(idF);
+				p = proR.getReferenceById(idP);
+				FrameworkUtilizadoId id = new FrameworkUtilizadoId();
+				id.setFramework(f);
+				id.setProjeto(p);
+				frameworkUtilizados = futilR.findAll();
+				frameworkUtilizado = null;
+			} else if (acao.equals("editar")) {
+				idP = Integer.parseInt(params.get("desenvolvedor_id"));
+				idF = Integer.parseInt(params.get("linguagem_id"));
+				f = fraR.getReferenceById(idF);
+				p = proR.getReferenceById(idP);
+				frameworkUtilizado = futilR.findByProjetoAndFramework(p, f);
+				frameworkUtilizados = null;
+				model.addAttribute("frameworkUtilizados", frameworkUtilizado);
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		} finally {
+			model.addAttribute("erro", erro);
+			model.addAttribute("frameworkUtilizados", frameworkUtilizado);
+		}
+
 		return new ModelAndView("atualizar_frameworks");
 	}
+	
 	
 	
 	

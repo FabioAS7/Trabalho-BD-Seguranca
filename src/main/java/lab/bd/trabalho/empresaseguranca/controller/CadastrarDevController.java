@@ -1,7 +1,5 @@
 package lab.bd.trabalho.empresaseguranca.controller;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lab.bd.trabalho.empresaseguranca.model.Desenvolvedor;
-import lab.bd.trabalho.empresaseguranca.model.Linguagem;
 import lab.bd.trabalho.empresaseguranca.model.Senioridade;
 import lab.bd.trabalho.empresaseguranca.repository.DesenvolvedorRepository;
 import lab.bd.trabalho.empresaseguranca.repository.SenioridadeRepository;

@@ -66,6 +66,7 @@
                     <td>
                         <label for="nome">Nome do Desenvolvedor:</label>
                     </td>
+                    <td>
                         <select name="desenvolvedor_id">
                             <c:forEach var="d" items="${desenvolvedores}">
 							    <option value="${d.id}"
@@ -75,6 +76,7 @@
                                 </option>
 						    </c:forEach>
                         </select>
+                    </td>
                 </tr>
 
                 <tr>
@@ -87,7 +89,7 @@
 							    <option value="${l.id}"
 								    <c:if test="${partiDev.linguagem.id == l.id}">selected
                                     </c:if>
-                                    >${l.nome}
+                                    >${l.nomeLinguagem}
                                 </option>
 						    </c:forEach>
                         </select>
@@ -111,7 +113,7 @@
         </form>
 
          <div>
-			<c:if test="${not empty partiDev}">
+			<c:if test="${not empty partiDevs}">
 				<table class="table_border table">
 					<thead>
 						<tr>
@@ -123,17 +125,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="pd" items="${partiDev}">
+						<c:forEach var="pd" items="${partiDevs}">
 							<tr>
 								<td>${pd.desenvolvedor.id }</td>
 								<td>${pd.desenvolvedor.nome }</td>
 								<td>${pd.linguagem.id}</td>
-								<td>${pd.liguagem.nomeLinguagem}</td>
+								<td>${pd.linguagem.nomeLinguagem}</td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/especialidade_dev?acao=editar&id=${d.id}">Editar</a>
+									href="${pageContext.request.contextPath }/especialidade_dev?acao=editar">Editar</a>
                                 </td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/especialidade_dev?acao=excluir&id=${d.id}">Deletar</a>
+									href="${pageContext.request.contextPath }/especialidade_dev?acao=excluir">Deletar</a>
                                 </td>
 							</tr>
 						</c:forEach>
