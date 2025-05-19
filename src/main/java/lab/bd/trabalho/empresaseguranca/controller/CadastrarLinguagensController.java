@@ -43,6 +43,7 @@ public class CadastrarLinguagensController {
 					linguagem = lingRep.getReferenceById(id);
 					lingRep.deleteById(id);
 					saida = "Linguagem " + linguagem.getNomeLinguagem() + " deletada" ;
+					linguagem = null;
 				}
 			}
 		} catch (Exception e) {
@@ -73,6 +74,10 @@ public class CadastrarLinguagensController {
 		linguagem.setTipo(tipo);
 		linguagem.setNomeIDE(nomeIDE);
 		
+		if(params.get("id") != null && !params.get("id").isEmpty()){
+			id = Integer.parseInt(params.get("id"));
+		}
+		
 		try {
 			if (cmd.equalsIgnoreCase("Adicionar")) {
 				if(linguagem.getNomeLinguagem().isBlank()) {
@@ -88,6 +93,7 @@ public class CadastrarLinguagensController {
 			}
 			
 			if(cmd.equalsIgnoreCase("Remover")) {
+				linguagem.setId(id);
 				if(id != null) {
 					lingRep.deleteById(id);
 					saida = "Linguagem excluida com sucesso";
@@ -130,11 +136,12 @@ public class CadastrarLinguagensController {
 				}
 				erro = e.getMessage();
 			}
+		} finally {
+			
 		}
 		model.addAttribute("erro", erro);
 		model.addAttribute("saida", saida);
 		model.addAttribute("linguagens", linguagens);
-		 
 		return new ModelAndView("cadastrar_linguagens");
 	}
 	

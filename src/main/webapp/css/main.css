@@ -110,3 +110,43 @@ button:active{
 	color: #005198;
 	text-decoration: none;
 }
+
+.Bem-vindo{
+    background-color: #A3CDE2;
+}
+
+.Bem-vindo>p{
+    text-align: justify;
+    font-size: larger;
+    font-weight: 400;
+}
+
+#sub_logo{
+    color: black;
+    font-family: Orbitron, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#sub_logo>span{
+    color: #0071D3;
+    font-family: Orbitron, Arial, Helvetica, sans-serif;
+}
+
+.loguinho{
+    font-family: Orbitron, Arial, Helvetica, sans-serif;
+}
+
+.loguinho>span{
+    color: #005198;
+    font-family: Orbitron, Arial, Helvetica, sans-serif;
+}
+
+.dd{
+    text-align: justify;
+    padding: 10px 7px 5px 7px;
+    border: 1px solid;
+}
+
+.dd>h2{
+    text-align: center;
+}
