@@ -12,5 +12,7 @@ public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, In
 	public List<Desenvolvedor> findDesenvolvedorSenioridade(String nomeSenioridade);
 	
 	public List<Desenvolvedor> findByFormacao(String formacao);
+	
+	public Desenvolvedor findByNome(String nome);
 
 }

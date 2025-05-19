@@ -58,8 +58,9 @@
     </header>
 
     <main class="shadow">
-        <form action="cadastrarDev">
+        <form action="cadastrar_projeto" method="post">
             <h1>Criação de Projetos</h1>
+            <input type=hidden name=id value="${projeto.id }">
             <table> 
                 <tr>
                     <td>
@@ -70,7 +71,7 @@
                         value='<c:out value="${projeto.nome}"/>'>
                     </td>
                     <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
+                        <button type="submit" name="botao" value="Pesquisar">Pesquisar
                         <img src="./assets/pesquisa.ico" alt="">
                         </button>
                     </td>
@@ -82,12 +83,7 @@
                     </td>
                     <td>
                         <input type="date" name="data_inicio" 
-                        value='<c:out value="${framework.data_inicio}"/>'>
-                    </td>
-                    <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
-                        <img src="./assets/pesquisa.ico" alt="">
-                        </button>
+                        value='<c:out value="${projeto.dataInicio}"/>'>
                     </td>
                 </tr>
 
@@ -97,7 +93,7 @@
                     </td>
                     <td>
                         <input type="number" name="quant_dias_estimados" 
-                        value='<c:out value="${framework.quant_dias_estimados}"/>'>
+                        value='<c:out value="${projeto.quantDiasEstimados}"/>'>
                     </td>
                 </tr>
 
@@ -108,8 +104,8 @@
                         </label>
                     </td>
                     <td>
-                        <input type="number" name="orcamento" 
-                        value='<c:out value="${framework.orcamento}"/>'>
+                        <input type="number" step="0.01" name="orcamento" 
+                        value='<c:out value="${projeto.orcamento}"/>'>
                     </td>
                 </tr>
 
@@ -119,37 +115,31 @@
                     </td>
                     <td>
                         <select name="linguagem_id">
-                            <c:forEach var="a" items="${linguagens}">
-							    <option value="${a.id}"
-								    <c:if test="${linguagem.id != null}">selected
+                            <c:forEach var="l" items="${linguagens}">
+							    <option value="${l.id}"
+								    <c:if test="${projeto.linguagem.id == l.id}">selected
                                     </c:if>
-                                    >${a.nome}
+                                    >${l.nomeLinguagem}
                                 </option>
 						    </c:forEach>
                         </select>
                     </td>
-                    <!--Como diabos isso funciona?-->
-                    <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
-                        <img src="./assets/pesquisa.ico" alt="">
-                        </button>
-                    </td>
                 </tr>
 
                 <tr>
-                    <td><button type="submit" name="adicionar" value="Adicionar">Adicionar
+                    <td><button type="submit" name="botao" value="Adicionar">Adicionar
                     <img src="./assets/botao-adicionar_35x35.ico" alt="">
                     </button></td>
                     
-                    <td><button type="submit" name="listar" value="Listar">Listar
+                    <td><button type="submit" name="botao" value="Listar">Listar
                     <img src="./assets/lupa_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="remover" value="Remover">Remover
+                    <td><button type="submit" name="botao" value="Remover">Remover
                     <img src="./assets/lixeira_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="listar_atrasados" value="listar_atrasados">Listar Atrasados
+                    <td><button type="submit" name="botao" value="PesquisarAtt">Listar Atrasados
                     <img src="./assets/lupa_calendario_35x35.ico" alt="">
                     </button></td>
                 </tr>
@@ -158,7 +148,7 @@
 
         <!--Pesquisa normal-->
         <div>
-			<c:if test="${not empty framework}">
+			<c:if test="${not empty projetos}">
 				<table class="table_border table">
 					<thead>
 						<tr>
@@ -173,19 +163,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="a" items="${projeto}">
+						<c:forEach var="p" items="${projetos}">
 							<tr>
-								<td>${a.id}</td>
-								<td>${a.nome}</td>
-								<td>${a.data_inicio}</td>
-                                <td>${a.quant_dias_estimados}</td>
-                                <td>${a.orcamento}</td>
-                                <td>${a.linguagem.nome}</td> <!--Assim?-->
+								<td>${p.id}</td>
+								<td>${p.nome}</td>
+								<td>${p.dataInicio}</td>
+                                <td>${p.quantDiasEstimados}</td>
+                                <td>${p.orcamento}</td>
+                                <td>${p.linguagem.nomeLinguagem}</td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Editar</a>
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=editar&id=${p.id}">Editar</a>
                                 </td> <!--arrumar-->
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Deletar</a>
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=excluir&id=${p.id}">Deletar</a>
                                 </td> <!--arrumar-->
 							</tr>
 						</c:forEach>
@@ -194,11 +184,9 @@
 			</c:if>
 		</div>
         
-
-        <!--Pesquisa de Atrasados-->
         <br>
         <div>
-			<c:if test="${not empty framework}">
+			<c:if test="${not empty projetosA}">
 				<table class="table_border table">
 					<thead>
 						<tr>
@@ -214,20 +202,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="a" items="${projeto}">
+						<c:forEach var="p" items="${projetosA}">
 							<tr>
-								<td>${a.id}</td>
-								<td>${a.nome}</td>
-								<td>${a.data_inicio}</td>
-                                <td>${a.quant_dias_estimados}</td>
-                                <td>${a.quant_dias_atrasados} &#x26A0;&#xFE0F;</td> <!--Atrasados-->
-                                <td>${a.orcamento}</td>
-                                <td>${a.linguagem.nome}</td> <!--Assim?-->
+								<td>${p.id}</td>
+								<td>${p.nome}</td>
+								<td>${p.dataInicio}</td>
+                                <td>${p.quantDiasEstimados}</td>
+                                <td>${p.quantDiasAtrasados} &#x26A0;&#xFE0F;</td> <!--Atrasados-->
+                                <td>${p.orcamento}</td>
+                                <td>${p.linguagem.nomeLinguagem}</td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Editar</a>
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=editar&id=${p.id}">Editar</a>
                                 </td> <!--arrumar-->
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Deletar</a>
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=editar&id=${p.id}">Deletar</a>
                                 </td> <!--arrumar-->
 							</tr>
 						</c:forEach>

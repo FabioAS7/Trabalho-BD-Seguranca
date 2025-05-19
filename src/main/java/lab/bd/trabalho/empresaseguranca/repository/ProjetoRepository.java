@@ -18,4 +18,5 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Integer> {
 	@Query(value = "SELECT * FROM dbo.function_projetos_atrasados()", nativeQuery= true)
 	public List<Projeto> findProjetoAtrasado();
 
+	public Projeto findByNome(String nome);
 }

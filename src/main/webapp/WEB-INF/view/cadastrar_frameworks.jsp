@@ -86,7 +86,7 @@
 					<td><select name="linguagem_id">
 							<c:forEach var="l" items="${linguagens}">
 								<option value="${l.id}"
-									<c:if test="${framework.linguagem.id != null}">selected </c:if>>
+									<c:if test="${framework.linguagem.id == l.id}">selected </c:if>>
 									${l.nomeLinguagem}</option>
 							</c:forEach>
 					</select></td>
