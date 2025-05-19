@@ -87,19 +87,15 @@ public class AtualizarFrameworksController {
 			                novo.setFramework(f);
 			                futilR.save(novo);
 			                saida = "Framework associado ao projeto com sucesso";
-			            } else {
-			                saida = "Este framework ja esta nesse projeto.";
 			            }
-			        } else {
-			            erro = "Projeto ou Framework nao encontrado.";
 			        }
-			    } else {
-			        erro = "ID do Projeto ou Framework invalido.";
 			    }
 			}
+			
 			if(cmd.equalsIgnoreCase("Listar")) {
 				frameworkUtilizados = futilR.findAll();
 			}
+			
 			if (cmd.equalsIgnoreCase("Remover")) {
 			    try {
 			        if (idP != null && idF != null) {
