@@ -84,7 +84,7 @@
                         </label>
                     </td>
                     <td>
-                        <input type="number" name="valorHora" 
+                        <input type="number" step="0.01" name="valorHora" 
                         value='<c:out value="${senioridade.valorHora}"/>'>
                     </td>
                 </tr>

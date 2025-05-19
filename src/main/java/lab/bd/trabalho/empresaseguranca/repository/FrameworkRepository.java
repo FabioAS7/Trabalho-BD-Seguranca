@@ -10,5 +10,7 @@ public interface FrameworkRepository extends JpaRepository<Framework, Integer>{
 	//@Query(value = "SELECT * FROM framework WHERE linguagem_id = (SELECT id FROM linguagem WHERE nome_linguagem LIKE ?1", nativeQuery = true)
 	@Query("SELECT f FROM Framework f WHERE f.linguagem.nomeLinguagem LIKE ?1")
 	public List<Framework> findFrameworkNomeLinguagem(String nomeLinguagem);
+	
+	public Framework findByNome(String nome);
 
 }
