@@ -161,26 +161,15 @@
 
 	</main>
 
-	<footer>
-		<p>
-			Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ"
-				target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7"
-				target="_blank">Fábio</a>
-		</p>
-		<p>|</p>
-		<p>
-			<a href="politicadeprivacidade" target="_blank">Política de
-				Privacidade</a>
-		</p>
-		<p>|</p>
-		<p>
-			<a href="#">Termos e Condições</a>
-		</p>
-		<p>|</p>
-		<p>
-			<a href="#">Sobre este site (MavenSite)</a>
-		</p>
-	</footer>
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">Fábio</a></p>
+        <p>|</p>
+        <p> <a href="politicadeprivacidade" target="_blank">Política de Privacidade</a></p>
+        <p>|</p>
+        <p><a href="#">Termos e Condições</a></p>
+        <p>|</p>
+        <p><a href="${pageContext.request.contextPath}/maven-site/index.html" target="_blank">Sobre este site (MavenSite)</a></p>
+    </footer>
 
 </body>
 </html>

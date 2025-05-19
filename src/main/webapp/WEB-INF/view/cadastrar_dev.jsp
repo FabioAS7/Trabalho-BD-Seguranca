@@ -185,12 +185,12 @@
 
         <aside>
 			<c:if test="${not empty saida}">
-				<h2 class="h2_mensagem_VALIDACAO">
+				<h2 class="h2_mensagem_VALIDACAO" id=h2_mensagem_VALIDACAO>
 					<c:out value="${saida}"/>
 				</h2>
 			</c:if>
 			<c:if test="${not empty erro}">
-				<h2 class="h2_mensagem_ERRO">
+				<h2 class="h2_mensagem_ERRO" id="h2_mensagem_ERRO">
 					<c:out value="${erro}" />
 				</h2>
 			</c:if>
@@ -201,11 +201,11 @@
     <footer>
         <p>Desenvolvido por <a href="https://github.com/AnGeloMuniZZZ" target="_blank">Angelo</a> & <a href="https://github.com/FabioAS7" target="_blank">Fábio</a></p>
         <p>|</p>
-        <p> <a href="politicadeprivacidade.html" target="_blank">Política de Privacidade</a></p>
+        <p> <a href="politicadeprivacidade" target="_blank">Política de Privacidade</a></p>
         <p>|</p>
         <p><a href="#">Termos e Condições</a></p>
         <p>|</p>
-        <p><a href="#">Sobre este site (MavenSite)</a></p>
+        <p><a href="${pageContext.request.contextPath}/maven-site/index.html" target="_blank">Sobre este site (MavenSite)</a></p>
     </footer>
     
 </body>

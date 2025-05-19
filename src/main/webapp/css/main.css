@@ -150,3 +150,23 @@ button:active{
 .dd>h2{
     text-align: center;
 }
+
+.h2_mensagem_ERRO{
+	color: #c93d3d;
+    text-align: center;
+}
+
+.h2_mensagem_VALIDACAO{
+	color: #5aac3c;
+    text-align: center;
+}
+
+#h2_mensagem_ERRO{
+	color: #c93d3d;
+    text-align: center;
+}
+
+#h2_mensagem_VALIDACAO{
+	color: #5aac3c;
+    text-align: center;
+}
