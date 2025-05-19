@@ -58,6 +58,11 @@
     </header>
 
     <main class="shadow">
+        <main class="shadow">
+        <div style="display: flex; justify-content: center;">
+            <img src="./assets/espelho.jpg" alt="VOCE!">
+        </div>
+    </main>
     </main>
 
     <footer>

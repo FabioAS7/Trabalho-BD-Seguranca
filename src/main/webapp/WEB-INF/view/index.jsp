@@ -129,11 +129,11 @@
         <div class="dd">
             <h2>❗🤖ATENÇÃO🤖❗</h2>
             <P>Os textos desse site foram gerados por IA, é muito texto 😭</P>
-            <p>Como esse Projeto foi feito? Olhe os Passo-a-passo</p>
+            <p>Como esse Projeto foi feito? Olhe o Passo-a-passo</p>
             <ol>
                 <li>Passo: Ler o <strong><a href="./docs/Av2_LabBD.pdf" class="a_link_clicavel" target="_blank">enunciado</a></strong></li>
                 <li>Passo: Montar o <strong><a href="./docs/diagrama_de_relacionamento_de_entidades.jpg" class="a_link_clicavel" target="_blank">Diagrama De Entidades</a></strong></li>
-                <li>Passo: Montar o <strong><a href="./docs/diagrama_de_relacionamento_de_entidades.jpg" class="a_link_clicavel" target="_blank">Diagrama De Classes</a></strong></li>
+                <li>Passo: Montar o <strong><a href="./docs/diagrama_de_classes.jpg" class="a_link_clicavel" target="_blank">Diagrama De Classes</a></strong></li>
                 <li>Passo: Montar o <strong><a href="./docs/banco_de_dados_empresa_seguranca.sql" class="a_link_clicavel" target="_blank">Banco de Bagos(TRIGGERs/PROCEDUREs/FUNCTIONs)</a></strong></li>
                 <li>Passo: <Strong>Desenvolver o HTML</Strong> (QUE ESTÁ LINDO APROPOSITO 😆)</li>
                 <li>Passo: <strong>Desenvolver o CSS</strong> (Que deixou o site mais bonito ainda)</li>
