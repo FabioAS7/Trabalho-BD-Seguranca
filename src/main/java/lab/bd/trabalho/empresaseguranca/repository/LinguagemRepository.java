@@ -7,6 +7,8 @@ import lab.bd.trabalho.empresaseguranca.model.Linguagem;
 
 public interface LinguagemRepository extends JpaRepository<Linguagem, Integer>{
 	
+	public List<Linguagem> findBynomeLinguagem(String nomeLinguagem);
+	
 	public List<Linguagem> findByTipo(String tipo);
 	
 	public List<Linguagem> findByNomeIDE(String nomeIDE);

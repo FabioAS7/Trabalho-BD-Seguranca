@@ -58,19 +58,20 @@
     </header>
 
     <main class="shadow">
-        <form action="cadastrarDev" >
+        <form action="cadastrar_linguagens" method="post">
             <h1>Cadastro de Linguagens</h1>
-            <table> 
+            <input type="hidden" name="id" value="${linguagem.id}">
+            <table> 	
                 <tr>
                     <td>
                         <label for="nome_linguagem">Nome da Linguagem:</label>
                     </td>
                     <td>
                         <input type="text" name="nome_linguagem" 
-                        value='<c:out value="${linguagem.nome_linguagem}"/>'>
+                        value='<c:out value="${linguagem.nomeLinguagem}"/>'>
                     </td>
                     <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
+                        <button type="submit" name="botao" value="PesquisarNome">Pesquisar
                         <img src="./assets/pesquisa.ico" alt="">
                         </button>
                     </td>
@@ -92,9 +93,13 @@
                         <input type="radio" value="funcional" name="tipo">
                         <label for="Funcional">Funcional</label>
                         <br>
+                        
+                        <input type="radio" value="procedural" name="tipo">
+                        <label for="Procedural">Procedural</label>
+                        <br>
                     </td>
                     <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
+                        <button type="submit" name="botao" value="PesquisarTipo">Pesquisar
                         <img src="./assets/pesquisa.ico" alt="">
                         </button>
                     </td>
@@ -106,25 +111,25 @@
                     </td>
                     <td>
                         <input type="text" name="nome_ide" 
-                        value='<c:out value="${linguagem.nome_ide}"/>'>
+                        value='<c:out value="${linguagem.nomeIDE}"/>'>
                     </td>
                     <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
+                        <button type="submit" name="botao" value="PesquisarIDE">Pesquisar
                         <img src="./assets/pesquisa.ico" alt="">
                         </button>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><button type="submit" name="adicionar" value="Adicionar">Adicionar
+                    <td><button type="submit" name="botao" value="Adicionar">Adicionar
                     <img src="./assets/botao-adicionar_35x35.ico" alt="">
                     </button></td>
                     
-                    <td><button type="submit" name="listar" value="Listar">Listar
+                    <td><button type="submit" name="botao" value="Listar">Listar
                     <img src="./assets/lupa_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="remover" value="Remover">Remover
+                    <td><button type="submit" name="botao" value="Remover">Remover
                     <img src="./assets/lixeira_35x35.ico" alt="">
                     </button></td>
                 </tr>
@@ -147,14 +152,14 @@
 						<c:forEach var="a" items="${linguagens}">
 							<tr>
 								<td>${a.id}</td>
-								<td>${a.nome_linguagem}</td>
+								<td>${a.nomeLinguagem}</td>
 								<td>${a.tipo}</td>
-								<td>${a.nome_ide}</td>
+								<td>${a.nomeIDE}</td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Editar</a>
+									href="${pageContext.request.contextPath }/cadastrar_linguagens?acao=editar&id=${a.id}">Editar</a>
                                 </td> <!--arrumar-->
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Deletar</a>
+									href="${pageContext.request.contextPath }/cadastrar_linguagens?acao=deletar&id=${a.id}">Deletar</a>
                                 </td> <!--arrumar-->
 							</tr>
 						</c:forEach>
@@ -175,6 +180,9 @@
 				</h2>
 			</c:if>
 		</aside>
+		
+		
+		
     </main>
 
     <footer>
