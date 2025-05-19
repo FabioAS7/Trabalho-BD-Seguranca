@@ -58,22 +58,23 @@
     </header>
 
     <main class="shadow">
-        <form action="cadastrarDev" >
+        <form action="especialidade_dev" method="post">
             <h1>Cadastro de Especialidade</h1>
+            <input type=hidden name=id value="${partiDev }">
             <table> 
                 <tr>
                     <td>
                         <label for="nome">Nome do Desenvolvedor:</label>
                     </td>
-                    <td>
-                        <input type="text" name="nome" 
-                        value='<c:out value="${desenvolvedor.nome}"/>'>
-                    </td>
-                    <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
-                        <img src="./assets/pesquisa.ico" alt="">
-                        </button>
-                    </td>
+                        <select name="desenvolvedor_id">
+                            <c:forEach var="d" items="${desenvolvedores}">
+							    <option value="${d.id}"
+								    <c:if test="${partiDev.desenvolvedor.id == d.id}">selected
+                                    </c:if>
+                                    >${d.nome}
+                                </option>
+						    </c:forEach>
+                        </select>
                 </tr>
 
                 <tr>
@@ -82,11 +83,11 @@
                     </td>
                     <td>
                         <select name="linguagem_id">
-                            <c:forEach var="a" items="${linguagens}">
-							    <option value="${a.id}"
-								    <c:if test="${linguagem.id != null}">selected
+                            <c:forEach var="l" items="${linguagens}">
+							    <option value="${l.id}"
+								    <c:if test="${partiDev.linguagem.id == l.id}">selected
                                     </c:if>
-                                    >${a.nome}
+                                    >${l.nome}
                                 </option>
 						    </c:forEach>
                         </select>
@@ -94,22 +95,52 @@
                 </tr>
 
                 <tr>
-                    <td><button type="submit" name="adicionar" value="Adicionar">Adicionar
+                    <td><button type="submit" name="botao" value="Adicionar">Adicionar
                     <img src="./assets/botao-adicionar_35x35.ico" alt="">
                     </button></td>
                     
-                    <td><button type="submit" name="listar" value="Listar">Listar
+                    <td><button type="submit" name="botao" value="Listar">Listar
                     <img src="./assets/lupa_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="remover" value="Remover">Remover
+                    <td><button type="submit" name="botao" value="Remover">Remover
                     <img src="./assets/lixeira_35x35.ico" alt="">
                     </button></td>
                 </tr>
             </table>
         </form>
 
-        <!--Tem q listar? como? tabela assosiativa-->
+         <div>
+			<c:if test="${not empty partiDev}">
+				<table class="table_border table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Desenvolvedor</th>
+							<th>ID</th>
+							<th>Linguagem</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="pd" items="${partiDev}">
+							<tr>
+								<td>${pd.desenvolvedor.id }</td>
+								<td>${pd.desenvolvedor.nome }</td>
+								<td>${pd.linguagem.id}</td>
+								<td>${pd.liguagem.nomeLinguagem}</td>
+								<td><a class="a_link_clicavel"
+									href="${pageContext.request.contextPath }/especialidade_dev?acao=editar&id=${d.id}">Editar</a>
+                                </td>
+								<td><a class="a_link_clicavel"
+									href="${pageContext.request.contextPath }/especialidade_dev?acao=excluir&id=${d.id}">Deletar</a>
+                                </td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+		</div>
 
         <aside>
 			<c:if test="${not empty saida}">

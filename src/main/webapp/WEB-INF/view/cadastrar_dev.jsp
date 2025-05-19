@@ -60,6 +60,7 @@
     <main class="shadow">
         <form action="cadastrar_dev" method="post" >
             <h1>Cadastro de Desenvolvedores</h1>
+             <input type=hidden name=id value="${desenvolvedor.id }">
             <table> 
                 <tr>
                     <td>
@@ -85,11 +86,15 @@
                         <label for="ensino">Ensino Médio</label>
                         <br>
                     	
-                        <input type="radio" value="tecnico" name="Formacao">
+                        <input type="radio" value="tecnico" name="Formacao"
+                        	<c:if test="${desenvolvedor.formacao == 'tecnico'}"> checked 
+                        	</c:if>>
                         <label for="tecnico">Técnico</label>
                         <br>
 
-                        <input type="radio" value="superior" name="Formacao">
+                        <input type="radio" value="superior" name="Formacao"
+                       		<c:if test="${desenvolvedor.formacao == 'superior'}"> checked 
+                        	</c:if>>
                         <label for="superior">Superior</label>
                         <br>
                     </td>
@@ -105,15 +110,21 @@
                         <label for="Senioridade">Senioridade:</label>
                     </td>
                     <td>
-                        <input type="radio" value="junior" name="Senioridade">
+                        <input type="radio" value="junior" name="Senioridade"
+                        	<c:if test="${desenvolvedor.senioridade.nome == 'junior'}"> checked 
+                        	</c:if>>
                         <label for="Junior ">Júnior </label>
                         <br>
 
-                        <input type="radio" value="pleno" name="Senioridade">
+                        <input type="radio" value="pleno" name="Senioridade"
+                        	<c:if test="${desenvolvedor.senioridade.nome == 'pleno'}"> checked 
+                        	</c:if>>
                         <label for="Pleno">Pleno</label>
                         <br>
 
-                        <input type="radio" value="senior" name="Senioridade">
+                        <input type="radio" value="senior" name="Senioridade"
+                        	<c:if test="${desenvolvedor.senioridade.nome == 'senior'}"> checked 
+                        	</c:if>>
                         <label for="Senior">Sênior</label>
                         <br>
                     </td>
@@ -158,7 +169,7 @@
 								<td>${d.id }</td>
 								<td>${d.nome }</td>
 								<td>${d.formacao}</td>
-								<td>${d.senioridade}</td>
+								<td>${d.senioridade.nome}</td>
 								<td><a class="a_link_clicavel"
 									href="${pageContext.request.contextPath }/cadastrar_dev?acao=editar&id=${d.id}">Editar</a>
                                 </td>
