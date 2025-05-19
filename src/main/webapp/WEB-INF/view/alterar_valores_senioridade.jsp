@@ -58,8 +58,9 @@
     </header>
 
     <main class="shadow">
-        <form action="cadastrarDev" >
-            <h1>Cadastro de Linguagens</h1>
+        <form action="alterar_valores_senioridade" method="post" >
+            <h1>Cadastro de Senioridade</h1>
+            <input type=hidden name=id value="${senioridade.id }">
             <table> 
                 <tr>
                     <td>
@@ -70,7 +71,7 @@
                         value='<c:out value="${senioridade.nome}"/>'>
                     </td>
                     <td>
-                        <button type="submit" name="pesquisar" value="Pesquisar">Pesquisar
+                        <button type="submit" name="botao" value="Pesquisar">Pesquisar
                         <img src="./assets/pesquisa.ico" alt="">
                         </button>
                     </td>
@@ -83,21 +84,21 @@
                         </label>
                     </td>
                     <td>
-                        <input type="number" name="valor_hora" 
-                        value='<c:out value="${senioridade.valor_hora}"/>'>
+                        <input type="number" name="valorHora" 
+                        value='<c:out value="${senioridade.valorHora}"/>'>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><button type="submit" name="adicionar" value="Adicionar">Adicionar
+                    <td><button type="submit" name="botao" value="Adicionar">Adicionar
                     <img src="./assets/botao-adicionar_35x35.ico" alt="">
                     </button></td>
                     
-                    <td><button type="submit" name="listar" value="Listar">Listar
+                    <td><button type="submit" name="botao" value="Listar">Listar
                     <img src="./assets/lupa_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="remover" value="Remover">Remover
+                    <td><button type="submit" name="botao" value="Remover">Remover
                     <img src="./assets/lixeira_35x35.ico" alt="">
                     </button></td>
                 </tr>
@@ -105,7 +106,7 @@
         </form>
 
         <div>
-			<c:if test="${not empty senioridade}">
+			<c:if test="${not empty senioridades}">
 				<table class="table_border table">
 					<thead>
 						<tr>
@@ -117,17 +118,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="a" items="${senioridade}">
+						<c:forEach var="s" items="${senioridades}">
 							<tr>
-								<td>${a.id}</td>
-								<td>${a.nome}</td>
-								<td>${a.valor_hora}</td>
+								<td>${s.id}</td>
+								<td>${s.nome}</td>
+								<td>${s.valorHora}</td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Editar</a>
-                                </td> <!--arrumar-->
+									href="${pageContext.request.contextPath }/alterar_valores_senioridade?acao=editar&id=${s.id}">Editar</a>
+                                </td>
 								<td><a class="a_link_clicavel"
-									href="${pageContext.request.contextPath }/controleDev?acao=editar&id=${a.id}">Deletar</a>
-                                </td> <!--arrumar-->
+									href="${pageContext.request.contextPath }/alterar_valores_senioridade?acao=excluir&id=${s.id}">Deletar</a>
+                                </td>
 							</tr>
 						</c:forEach>
 					</tbody>

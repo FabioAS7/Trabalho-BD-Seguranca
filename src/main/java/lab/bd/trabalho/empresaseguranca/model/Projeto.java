@@ -33,7 +33,7 @@ public class Projeto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
@@ -59,8 +59,7 @@ public class Projeto {
 	@JoinColumn(name = "linguagem_id", nullable = false)
 	private Linguagem linguagem;
 	
-	public Projeto(int Id, String nome, LocalDate data, int qant, BigDecimal or, Linguagem linguagem) {
-		this.id = Id;
+	public Projeto(String nome, LocalDate data, int qant, BigDecimal or, Linguagem linguagem) {
 		this.nome = nome;
 		this.dataInicio = data;
 		this.quantDiasEstimados = qant;

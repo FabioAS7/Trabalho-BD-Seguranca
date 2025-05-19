@@ -27,7 +27,7 @@ public class Desenvolvedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome", length = 120, nullable = false)
 	private String nome;
