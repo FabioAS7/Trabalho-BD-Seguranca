@@ -58,7 +58,7 @@
     </header>
 
     <main class="shadow">
-        <form action="cadastrarDev" >
+        <form action="atualizar_frameworks" method="post">
             <h1>Frameworks Do Projeto</h1>
             <table> 
 
@@ -67,8 +67,8 @@
                         <label for="nome">Projeto:</label>
                     </td>
                     <td>
-                        <select name="id">
-                            <c:forEach var="a" items="${projeto}">
+                        <select name="idP">
+                            <c:forEach var="a" items="${projetos}">
 							    <option value="${a.id}"
 								    <c:if test="${projeto.id != null}">selected
                                     </c:if>
@@ -84,8 +84,8 @@
                         <label for="nome">Framework:</label>
                     </td>
                     <td>
-                        <select name="id">
-                            <c:forEach var="b" items="${framework}">
+                        <select name="idF">
+                            <c:forEach var="b" items="${frameworks}">
 							    <option value="${b.id}"
 								    <c:if test="${framework.id != null}">selected
                                     </c:if>
@@ -98,21 +98,53 @@
 
 
                 <tr>
-                    <td><button type="submit" name="adicionar" value="Adicionar">Adicionar
+                    <td><button type="submit" name="botao" value="Adicionar">Adicionar
                     <img src="./assets/botao-adicionar_35x35.ico" alt="">
                     </button></td>
                     
-                    <td><button type="submit" name="listar" value="Listar">Listar
+                    <td><button type="submit" name="botao" value="Listar">Listar
                     <img src="./assets/lupa_35x35.ico" alt="">
                     </button></td>
 
-                    <td><button type="submit" name="remover" value="Remover">Remover
+                    <td><button type="submit" name="botao" value="Remover">Remover
                     <img src="./assets/lixeira_35x35.ico" alt="">
                     </button></td>
                 </tr>
             </table>
         </form>
-
+	
+		 <div>
+			<c:if test="${not empty projetos}">
+				<table class="table_border table">
+					<thead>
+						<tr>
+							<th>ID do Projeto</th>
+							<th>Nome do Projeto</th>
+							<th>ID do Framework</th>
+							<th>Nome do Framework</th>
+                            <th></th>
+                            <th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="p" items="${frameworkUtilizados}">
+							<tr>
+								<td>${p.projeto.id}</td>
+								<td>${p.projeto.nome}</td>
+								<td>${p.framework.id}</td>
+								<td>${p.framework.nome}</td>
+								<td><a class="a_link_clicavel"
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=editar&id=${p.projeto.id}">Editar</a>
+                                </td> <!--arrumar-->
+								<td><a class="a_link_clicavel"
+									href="${pageContext.request.contextPath }/cadastrar_projeto?acao=excluir&id=${p.id}">Deletar</a>
+                                </td> <!--arrumar-->
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+		</div>
         <!--Tem q listar? como? tabela assosiativa-->
 
         <aside>
